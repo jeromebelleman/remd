@@ -1,0 +1,16 @@
+#! /usr/bin/env python
+
+import time
+import subprocess
+import daemon
+
+def main():
+    args = ['/usr/bin/rem', '-z',
+            '-kurxvt +rv -hold -name notsink -title Reminder -e echo %s']
+    with daemon.DaemonContext():
+        while True:
+            subprocess.call(args)
+            time.sleep(60)
+
+if __name__ == '__main__':
+    main()
