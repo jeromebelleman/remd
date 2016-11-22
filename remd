@@ -5,9 +5,8 @@ import subprocess
 import daemon
 
 def main():
-    title = '"$(echo %s | cut -c1-10)"'
     args = ['/usr/bin/rem', '-z',
-            '-kurxvt +rv -hold -name notsink -title %s -e echo %%s &' % title]
+            '-kurxvt +rv -hold -name notsink -title %s -e echo %s &']
     with daemon.DaemonContext():
         while True:
             subprocess.call(args)
